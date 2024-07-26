@@ -28,3 +28,11 @@ map('n', '<C-Right>', ':vertical resize +2<CR>', opts)
 -- move line
 map('v', 'J', ":m '>+1<CR>gv=gv")
 map('v', 'K', ":m '<-2<CR>gv=gv")
+
+
+-----------------
+--   Plugins   --
+-----------------
+
+-- tree
+map('n', '<leader>e', ':NvimTreeToggle<CR>', opts)
