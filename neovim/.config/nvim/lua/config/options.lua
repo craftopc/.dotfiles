@@ -2,6 +2,9 @@ local opt = vim.opt
 local g = vim.g
 
 opt.number = true
+opt.relativenumber = true
+opt.splitbelow = true
+opt.splitright = true
 opt.tabstop = 4
 opt.shiftwidth = 4
 opt.smartindent = true
