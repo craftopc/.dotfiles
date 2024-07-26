@@ -1,4 +1,5 @@
 local opt = vim.opt
+local g = vim.g
 
 opt.number = true
 opt.tabstop = 4
@@ -15,3 +16,5 @@ opt.hlsearch = true -- default: on
 opt.incsearch = true -- default: on
 opt.wildmenu = true -- default: on
 
+g.mapleader = " "
+g.maplocalleader = "\\"
