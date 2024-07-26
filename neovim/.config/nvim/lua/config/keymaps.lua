@@ -36,3 +36,6 @@ map('v', 'K', ":m '<-2<CR>gv=gv")
 
 -- tree
 map('n', '<leader>e', ':NvimTreeToggle<CR>', opts)
+
+-- Telescope
+map('n', '<leader><leader>', ':Telescope fd<CR>', opts)
