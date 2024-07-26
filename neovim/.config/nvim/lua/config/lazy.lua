@@ -28,4 +28,4 @@ require("lazy").setup({
   checker = { enabled = true },
 })
 
-require('autocmds-lastly')
+require('config.autocmds-lastly')
