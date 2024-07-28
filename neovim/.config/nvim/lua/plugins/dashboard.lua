@@ -2,25 +2,52 @@ return {
     {
         'nvimdev/dashboard-nvim',
         event = 'VimEnter',
-        opts = {
-            theme = 'doom',
-            config = {
-                header = {},
-                center = {
-                    {
-                        icon = ' ',
-                        icon_h1 = 'Recent files',
-                        desc = 'Find File',
-                        desc_h1 = 'String',
-                        key = 'b',
-                        keymap = 'SPC f f',
-                        key_h1 = 'Number',
-                        key_format = ' %s',
-                        action = 'lua print(2)'
+        dependencies = {{'nvim-tree/nvim-web-devicons'}},
+        opts = function()
+            local logo = [[
+  ___  ____    __    ____  ____  _____  ____   ___ 
+ / __)(  _ \  /__\  ( ___)(_  _)(  _  )(  _ \ / __)
+( (__  )   / /(__)\  )__)   )(   )(_)(  )___/( (__ 
+ \___)(_)\_)(__)(__)(__)   (__) (_____)(__)   \___)
+            ]]
+            logo = string.rep("\n", 4) .. logo .. "\n\n"
+
+            return {
+                theme = "doom",
+                config = {
+                    header = vim.split(logo, "\n"),
+                    center = {
+                        {
+                            desc = 'Find Files',
+                            action = 'lua vim.cmd("Telescope fd")',
+                            icon = ' ',
+                            key = 'f'
+                        }, {
+                            desc = 'Config',
+                            action = 'lua require("telescope.builtin").find_files({cwd="~/.dotfiles/neovim/.config/nvim"})',
+                            icon = ' ',
+                            key = 'c'
+                        }, {
+                            desc = 'Recent Files',
+                            action = 'lua vim.cmd("Telescope oldfiles")',
+                            icon = ' ',
+                            key = 'r'
+                        }, {
+                            desc = 'Lazy Manager',
+                            action = 'lua vim.cmd("Lazy")',
+                            icon = '󰒲 ',
+                            key = 'l'
+                        },
+                        {
+                            desc = 'Quit',
+                            action = 'lua vim.cmd("q")',
+                            icon = ' ',
+                            key = 'q'
+                        }
                     }
-                }
+                },
+                footer = {}
             }
-        },
-        dependencies = {{'nvim-tree/nvim-web-devicons'}}
+        end
     }
 }
