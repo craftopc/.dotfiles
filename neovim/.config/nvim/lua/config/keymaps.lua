@@ -1,9 +1,6 @@
 local map = vim.keymap.set
 
-local opts = {
-    noremap = true,
-    silent = true,
-}
+local opts = {noremap = true, silent = true}
 
 -----------------
 -- Normal mode --
@@ -29,7 +26,6 @@ map('n', '<C-Right>', ':vertical resize +2<CR>', opts)
 map('v', 'J', ":m '>+1<CR>gv=gv")
 map('v', 'K', ":m '<-2<CR>gv=gv")
 
-
 -----------------
 --   Plugins   --
 -----------------
@@ -39,3 +35,6 @@ map('n', '<leader>e', ':NvimTreeToggle<CR>', opts)
 
 -- Telescope
 map('n', '<leader><leader>', ':Telescope fd<CR>', opts)
+
+-- conform (format)
+map('n', '<leader>cf', ':Format<CR>', opts)
