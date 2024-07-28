@@ -12,6 +12,9 @@ map('n', '<C-j>', '<C-w>j', opts)
 map('n', '<C-k>', '<C-w>k', opts)
 map('n', '<C-l>', '<C-w>l', opts)
 
+-- quit
+map('n', '<leader>qq', ':qall<CR>', opts)
+
 -- adjust windows size
 map('n', '<C-Up>', ':resize -2<CR>', opts)
 map('n', '<C-Down>', ':resize +2<CR>', opts)
@@ -34,7 +37,8 @@ map('v', 'K', ":m '<-2<CR>gv=gv")
 map('n', '<leader>e', ':NvimTreeToggle<CR>', opts)
 
 -- Telescope
-map('n', '<leader><leader>', ':Telescope fd<CR>', opts)
+map('n', '<leader><leader>', ':Telescope fd theme=dropdown<CR>', opts)
+map('n', '<leader>b', ':Telescope buffers theme=dropdown<CR>', opts)
 
 -- conform (format)
 map('n', '<leader>cf', ':Format<CR>', opts)
