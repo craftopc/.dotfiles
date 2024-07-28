@@ -1,15 +1,11 @@
 return {
     "hrsh7th/nvim-cmp",
     version = false,
-    event = { "InsertEnter", "CmdlineEnter"},
+    event = {"InsertEnter", "CmdlineEnter"},
     dependencies = {
-        "neovim/nvim-lspconfig",
-        "L3MON4D3/LuaSnip",
-        "saadparwaiz1/cmp_luasnip",
-        "hrsh7th/cmp-nvim-lsp",
-        "hrsh7th/cmp-buffer",
-        "hrsh7th/cmp-path",
-        "hrsh7th/cmp-cmdline",
+        "neovim/nvim-lspconfig", "L3MON4D3/LuaSnip", "saadparwaiz1/cmp_luasnip",
+        "hrsh7th/cmp-nvim-lsp", "hrsh7th/cmp-buffer", "hrsh7th/cmp-path",
+        "hrsh7th/cmp-cmdline"
     },
     opts = function()
         local cmp = require("cmp")
@@ -18,11 +14,9 @@ return {
             snippet = {
                 expand = function(args)
                     luasnip.lsp_expand(args.body)
-                end,
+                end
             },
-            windows = {
-
-            },
+            windows = {},
             mapping = cmp.mapping.preset.insert({
                 ['<C-b>'] = cmp.mapping.scroll_docs(-4),
                 ['<C-f>'] = cmp.mapping.scroll_docs(4),
@@ -33,9 +27,7 @@ return {
                         if luasnip.expandable() then
                             luasnip.expand()
                         else
-                            cmp.confirm({
-                                select = true,
-                            })
+                            cmp.confirm({select = true})
                         end
                     else
                         fallback()
@@ -49,7 +41,7 @@ return {
                     else
                         fallback()
                     end
-                end, { "i", "s" }),
+                end, {"i", "s"}),
 
                 ["<S-Tab>"] = cmp.mapping(function(fallback)
                     if cmp.visible() then
@@ -59,16 +51,13 @@ return {
                     else
                         fallback()
                     end
-                end, { "i", "s" }),
+                end, {"i", "s"})
             }),
             sources = cmp.config.sources({
-                { name = 'nvim_lsp' },
-                { name = 'luasnip' },
-                { name = 'buffer' },
-                { name = 'path' },
-                { name = 'cmdline' },
+                {name = 'nvim_lsp'}, {name = 'luasnip'}, {name = 'buffer'},
+                {name = 'path'}, {name = 'cmdline'}
             })
         }
-    end,
+    end
 }
 
