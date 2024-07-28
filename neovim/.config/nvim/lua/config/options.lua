@@ -18,6 +18,7 @@ opt.smartcase = true
 opt.hlsearch = true -- default: on
 opt.incsearch = true -- default: on
 opt.wildmenu = true -- default: on
+opt.termguicolors = true -- plugin:bufferline needed
 
 g.mapleader = " "
 g.maplocalleader = "\\"
