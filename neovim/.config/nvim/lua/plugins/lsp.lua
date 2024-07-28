@@ -17,8 +17,24 @@ return {
     }, {
         "neovim/nvim-lspconfig",
         dependencies = {"mason-lspconfig.nvim"},
+
         config = function()
-            require('lspconfig').lua_ls.setup {settings = {['lua_ls'] = {}}}
+            local lsp_configurations = {
+                lua_ls = {
+                    settings = {
+                        ['lua_ls'] = {}
+                    }
+                },
+                clangd = {
+                    settings = {
+                        ['clangd'] = {}
+                    }
+                }
+            }
+
+            for lsp_name, lsp_settings in pairs(lsp_configurations) do
+                require('lspconfig')[lsp_name].setup(lsp_settings)
+            end
         end
     }
 }
