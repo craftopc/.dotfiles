@@ -1,0 +1,14 @@
+[class]
+
+text_default = [
+    {command = "nvim"}
+]
+
+[extension]
+
+c.inherit = "text_default"
+
+[mimetype]
+
+[mimetype.text]
+inherit = "text_default"
