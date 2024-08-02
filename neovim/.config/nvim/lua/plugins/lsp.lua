@@ -29,7 +29,17 @@ return {
                     settings = {
                         ['clangd'] = {}
                     }
-                }
+                },
+                rust_analyzer = {
+                    settings = {
+                        ['rust_analyzer'] = {}
+                    }
+                },
+                pyright = {
+                    settings = {
+                        ['pyright'] = {}
+                    }
+                },
             }
 
             for lsp_name, lsp_settings in pairs(lsp_configurations) do
