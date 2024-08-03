@@ -3,7 +3,12 @@ return {
     dependencies = {'nvim-tree/nvim-web-devicons'},
     opts = {
         options = {
-            theme = "horizon"
+            theme = "horizon",
+            disabled_filetype = {
+                statusline = {"dashboard", "lazy"},
+                winbar = {},
+            },
+            ignore_focus = {"NvimTree"},
         }
     }
 }
