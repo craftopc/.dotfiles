@@ -3,12 +3,16 @@ return {
     dependencies = {'nvim-tree/nvim-web-devicons'},
     opts = {
         options = {
-            theme = "horizon",
+            theme = "catppuccin",
             disabled_filetype = {
                 statusline = {"dashboard", "lazy"},
-                winbar = {},
+                winbar = {}
             },
-            ignore_focus = {"NvimTree"},
+            ignore_focus = {
+                "NvimTree", "dap-repl", "dapui_watches", "dapui_stacks",
+                "dapui_breakpoints", "dapui_scopes", "dapui_console"
+            },
+            extensions = {"nvim-dap-ui"}
         }
     }
 }
