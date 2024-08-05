@@ -2,6 +2,7 @@ return {
     'akinsho/bufferline.nvim',
     version = "*",
     dependencies = 'nvim-tree/nvim-web-devicons',
+    priority = 999,
     opts = {
         options = {
             mode = "buffers",
@@ -9,7 +10,7 @@ return {
             buffer_close_icon = '󰅚 ',
             offsets ={
                 {
-                    filetype = "NvimTree",
+                    filetype = "neo-tree",
                     text = "File Explorer",
                     text_align = "center",
                     highlight = "Directory",
@@ -18,5 +19,6 @@ return {
             },
             separator_style = "thick"
         },
+        -- highlight = require("catppuccin.groups.integrations.bufferline").get()
     }
 }

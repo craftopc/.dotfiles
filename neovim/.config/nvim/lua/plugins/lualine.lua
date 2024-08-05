@@ -9,7 +9,7 @@ return {
                 winbar = {}
             },
             ignore_focus = {
-                "NvimTree", "dap-repl", "dapui_watches", "dapui_stacks",
+                "neo-tree", "dap-repl", "dapui_watches", "dapui_stacks",
                 "dapui_breakpoints", "dapui_scopes", "dapui_console"
             },
             extensions = {"nvim-dap-ui"}
