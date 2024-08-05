@@ -36,9 +36,11 @@ return {
                 ['<C-Space>'] = cmp.mapping.complete(),
                 ['<C-e>'] = cmp.mapping.abort,
                 ['<CR>'] = cmp.mapping(function(fallback)
-                    if has_words_before() then
-                        cmp.select_next_item()
-                        cmp.confirm()
+                    if has_words_before() and cmp.visible() then
+                        cmp.confirm({
+                            behavior = cmp.ConfirmBehavior.Replace,
+                            select = true
+                        })
                     else
                         fallback()
                     end
