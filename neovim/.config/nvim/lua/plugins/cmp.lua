@@ -11,6 +11,14 @@ return {
         local cmp = require("cmp")
         local luasnip = require("luasnip")
 
+        -- cmp config
+        local has_words_before = function()
+            local line, col = unpack(vim.api.nvim_win_get_cursor(0))
+            return col ~= 0 and
+                       vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(
+                           col, col):match("%s") == nil
+        end
+
         -- lazydev
         opts.sources = opts.sources or {}
         table.insert(opts.sources, {name = "lazydev", group_index = 0})
@@ -27,7 +35,14 @@ return {
                 ['<C-f>'] = cmp.mapping.scroll_docs(4),
                 ['<C-Space>'] = cmp.mapping.complete(),
                 ['<C-e>'] = cmp.mapping.abort,
-                ['<CR>'] = cmp.mapping.confirm({select = true})
+                ['<CR>'] = cmp.mapping(function(fallback)
+                    if has_words_before() then
+                        cmp.select_next_item()
+                        cmp.confirm()
+                    else
+                        fallback()
+                    end
+                end, {"i", "s"})
 
             }),
             sources = cmp.config.sources({
