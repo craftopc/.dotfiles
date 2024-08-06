@@ -34,7 +34,8 @@ map('v', 'K', ":m '<-2<CR>gv=gv")
 -----------------
 
 -- tree
-map('n', '<leader>e', ':Neotree toggle<CR>', opts)
+map('n', '<leader>ee', ':Neotree toggle<CR>', opts)
+map('n', '<leader>es', ':Neotree toggle document_symbols<CR>', opts)
 
 -- Telescope
 map('n', '<leader><leader>', ':Telescope fd theme=dropdown<CR>', opts)
@@ -51,3 +52,6 @@ map("n", '<leader>db', ':DapToggleBreakpoint<CR>', opts)
 map("n", '<leader>di', ':DapStepInto<CR>', opts)
 map('n', '<leader>do', ':DapStepOver<CR>', opts)
 map('n', '<leader>dt', ':DapStepOut<CR>', opts)
+
+-- todo
+map('n', '<leader>td', ':TodoLocList<CR>', opts)
