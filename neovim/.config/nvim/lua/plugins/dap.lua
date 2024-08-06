@@ -4,6 +4,20 @@ return {
         config = function()
             local dap = require('dap')
 
+            -- ui
+            vim.fn.sign_define('DapBreakpoint', {
+                text = '🛑',
+                texthl = '',
+                linehl = '',
+                numhl = ''
+            })
+            vim.fn.sign_define('DapStopped', {
+                text = " ",
+                texth1 = '',
+                lineh1 = '',
+                numhl = ''
+            })
+
             dap.adapters.cppdbg = {
                 id = 'cppdbg',
                 type = 'executable',
@@ -34,10 +48,11 @@ return {
     }, {
         "jay-babu/mason-nvim-dap.nvim",
         dependencies = {"williamboman/mason.nvim", "mfussenegger/nvim-dap"}
-    },
-    {
+    }, {
         'theHamsta/nvim-dap-virtual-text',
-        dependencies = {"mfussenegger/nvim-dap", "nvim-treesitter/nvim-treesitter"},
+        dependencies = {
+            "mfussenegger/nvim-dap", "nvim-treesitter/nvim-treesitter"
+        },
         opts = {}
     }
 
