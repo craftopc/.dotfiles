@@ -1,4 +1,4 @@
 return {
     'stevearc/conform.nvim',
-    opts = {formatters_by_ft = {lua = {"lua-format"}}}
+    opts = {formatters_by_ft = {lua = {"lua-format"}, c = {"clangd"}}}
 }
