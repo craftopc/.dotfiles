@@ -13,7 +13,7 @@ return {
             dap = true,
             dap_ui = true,
             notify = false,
-            nvimtree = true,
+            neotree = false,
             treesitter = true,
             rainbow_delimiter = true,
             telescope = {
