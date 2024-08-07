@@ -34,8 +34,8 @@ map('v', 'K', ":m '<-2<CR>gv=gv")
 -----------------
 
 -- tree
-map('n', '<leader>ee', ':Neotree toggle<CR>', opts)
-map('n', '<leader>es', ':Neotree toggle document_symbols<CR>', opts)
+map('n', '<leader>e', ':Neotree toggle<CR>', opts)
+map('n', '<leader>E', ':Neotree toggle document_symbols<CR>', opts)
 
 -- Telescope
 map('n', '<leader><leader>', ':Telescope fd theme=dropdown<CR>', opts)
