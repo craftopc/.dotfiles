@@ -2,6 +2,26 @@ local map = vim.keymap.set
 
 local opts = {noremap = true, silent = true}
 
+local currentPath = vim.fn.getcwd()
+local fileName = vim.fn.expand('%:t')
+
+local fileType = vim.filetype.match({
+    filename = '' .. currentPath .. '/' .. fileName
+})
+-- code run
+if fileType == 'c' then
+    map('n', '<F5>',
+        ':!gcc ' .. currentPath .. '/' .. fileName .. ' -g -o ' .. currentPath ..
+            '/' .. fileName:gsub(".c", '') .. '<CR>', opts)
+    map('n', '<F6>',
+        ":TermExec cmd=" .. "'" .. currentPath .. '/' .. fileName:gsub(".c", "") ..
+            "'<CR>", opts)
+elseif fileType == 'python' then
+    map('n', '<F5>',
+        ":TermExec cmd=" .. "'" .. "python " .. currentPath .. '/' .. fileName ..
+            "'<CR>", opts)
+end
+
 -----------------
 -- Normal mode --
 -----------------
@@ -41,7 +61,9 @@ map('n', '<leader>E', ':Neotree toggle document_symbols<CR>', opts)
 map('n', '<leader><leader>', ':Telescope fd theme=dropdown<CR>', opts)
 map('n', '<leader>b', ':Telescope buffers theme=dropdown<CR>', opts)
 map('n', '<leader>uc', ':Telescope colorscheme<CR>', opts)
-map('n', '<leader>cc', ':lua require("telescope.builtin").find_files({cwd="~/.dotfiles/neovim/.config/nvim"})<CR>', opts)
+map('n', '<leader>cc',
+    ':lua require("telescope.builtin").find_files({cwd="~/.dotfiles/neovim/.config/nvim"})<CR>',
+    opts)
 
 -- conform (format)
 map('n', '<leader>cf', ':Format<CR>', opts)
@@ -55,3 +77,8 @@ map('n', '<leader>dt', ':DapStepOut<CR>', opts)
 
 -- todo
 map('n', '<leader>td', ':TodoLocList<CR>', opts)
+
+-- format
+map('n', '<leader>cb',
+    ':!~/.local/share/nvim/mason/bin/clang-format -style=google -dump-config > ' ..
+        currentPath .. '/.clang-format<CR>')

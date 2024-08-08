@@ -2,7 +2,7 @@ return {
     {
         'akinsho/toggleterm.nvim',
         version = "*",
-        cmd = "ToggleTerm",
+        cmd = {"ToggleTerm", "TermExec"},
         opts = { --[[ things you want to change go here]] }
     }
 }
