@@ -9,6 +9,7 @@ local fileType = vim.filetype.match({
     filename = '' .. currentPath .. '/' .. fileName
 })
 -- code run
+-- BUG: change workdir to current
 if fileType == 'c' then
     map('n', '<F5>',
         ':!gcc ' .. currentPath .. '/' .. fileName .. ' -g -o ' .. currentPath ..
@@ -19,7 +20,7 @@ if fileType == 'c' then
 elseif fileType == 'python' then
     map('n', '<F5>',
         ":TermExec cmd=" .. "'" .. "python " .. currentPath .. '/' .. fileName ..
-            "'<CR>", opts)
+            "'" .. ' dir=' .. "'" .. currentPath .. "'<CR>", opts)
 end
 
 -----------------
@@ -82,3 +83,7 @@ map('n', '<leader>td', ':TodoLocList<CR>', opts)
 map('n', '<leader>cb',
     ':!~/.local/share/nvim/mason/bin/clang-format -style=google -dump-config > ' ..
         currentPath .. '/.clang-format<CR>')
+
+-- toggleTerm
+-- HACK: trouble: ture map: <C-/> but when input <C-/> cound change <C-_>
+map('n', '<C-_>', ':ToggleTerm direction=float dir=' .. currentPath .. "<CR>", opts)
