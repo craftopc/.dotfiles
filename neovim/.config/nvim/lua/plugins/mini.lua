@@ -1,14 +1,29 @@
 return {
-    "echasnovski/mini.nvim",
-    version = false,
-
-    config = function ()
-        require('mini.ai').setup()
-        require("mini.pairs").setup()
-        require("mini.diff").setup()
-        require("mini.files").setup()
-        require("mini.cursorword").setup()
-        require("mini.icons").setup()
-        -- require("mini.surround").setup()
-    end
+    { "echasnovski/mini.pairs", version = false, opts = {} },
+    { "echasnovski/mini.diff", version = false, opts = {} },
+    { "echasnovski/mini.cursorword", version = false, opts = {} },
+    { "echasnovski/mini.icons", version = false, opts = {} },
+    {
+        "echasnovski/mini.indentscope",
+        version = false,
+        event = "VeryLazy",
+        opts = {},
+        init = function()
+            vim.api.nvim_create_autocmd("FileType", {
+                pattern = {
+                    "dashboard",
+                    "help",
+                    "lazy",
+                    "mason",
+                    "neo-tree",
+                    "notify",
+                    "toggleterm",
+                    "trouble",
+                },
+                callback = function()
+                    vim.b.miniindentscope_disable = true
+                end,
+            })
+        end,
+    },
 }
