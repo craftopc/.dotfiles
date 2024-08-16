@@ -3,6 +3,7 @@ return {
     { "echasnovski/mini.diff", version = false, opts = {} },
     { "echasnovski/mini.cursorword", version = false, opts = {} },
     { "echasnovski/mini.icons", version = false, opts = {} },
+    { "echasnovski/mini.move", version = false, opts = {} },
     {
         "echasnovski/mini.indentscope",
         version = false,
