@@ -4,3 +4,7 @@
 alias ff=joshuto
 # lazygit : a terminal git program
 alias gg=lazygit
+
+alias py=python
+
+alias ipy=ipython
