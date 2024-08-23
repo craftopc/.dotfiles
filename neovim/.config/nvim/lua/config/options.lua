@@ -20,7 +20,7 @@ opt.incsearch = true -- default: on
 opt.wildmenu = true -- default: on
 opt.termguicolors = true -- plugin:bufferline needed
 opt.completeopt = { "menu", "menuone", "noselect" } -- plugin: cmp needed
-opt.laststatus = 3
+opt.laststatus = 0
 
 g.mapleader = " "
 g.maplocalleader = "\\"
