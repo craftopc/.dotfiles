@@ -4,27 +4,45 @@ return {
         branch = "v3.x",
         cmd = "Neotree",
         dependencies = {
-            "nvim-lua/plenary.nvim", "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
-            "MunifTanjim/nui.nvim"
-            -- "3rd/image.nvim", -- Optional image support in preview window: See `# Preview Mode` for more information
+            "nvim-lua/plenary.nvim",
+            "nvim-tree/nvim-web-devicons",
+            "MunifTanjim/nui.nvim",
         },
+        init = function ()
+            vim.api.nvim_create_autocmd("BufEnter", {
+                group = vim.api.nvim_create_augroup("Neotree_start_directory", {clear = true}),
+                desc = "Start Neo-tree with directory",
+                once = true,
+                callback = function ()
+                    if package.loaded["neo-tree"] then
+                        return
+                    else
+                        local stats = vim.uv.fs_stat(vim.fn.argv(0))
+                        if stats and stats.type == "directory" then
+                            require("neo-tree")
+                        end
+                    end
+                end
+            })
+        end,
         opts = {
-            sources = {
-                "filesystem", "buffers", "git_status", "document_symbols"
-            },
-            source_selector = {
-                winbar = true,
-                statusline = false,
-                show_scrolled_off_parent_node = false,
-                sources = {
-                    {
-                        source = "filesystem", -- string
-                        display_name = " 󰉓 Files " -- string | nil
+            default_component_configs = {
+                git_status = {
+                    symbols = {
+                        unstaged = "󰽂 ",
+                        staged = "󰠘 ",
                     },
-                    {source = "document_symbols", display_name = "󰈙 Symbols"}
                 },
-                separator = {left = "", right = ""}
-            }
-        }
-    }
+            },
+            window = {
+                position = "left",
+                width = 35,
+                mappings = {
+                    ["l"] = "open",
+                    ["h"] = "close_node",
+                    ["<space>"] = "none",
+                },
+            },
+        },
+    },
 }
